@@ -1,3 +1,39 @@
+- npx create-next-app@latest
+- add .nvmrc -> lts/hydrogen
+- npx supabase init
+- npx supabase start
+- npx supabase migration new add_todos
+- add to new migration:
+```
+create table if not exists todos (
+  id uuid default gen_random_uuid() primary key,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  title text,
+  is_complete boolean default false,
+  user_id uuid references auth.users default auth.uid()
+);
+```
+- add to seed.sql
+```
+insert into todos(title)
+values
+  ('Create Supabase project'),
+  ('Create Next.js app from Supabase Starter template'),
+  ('Keep building cool stuff!');
+```
+- npx supabase db reset
+- npm install @supabase/auth-helpers-nextjs @supabase/supabase-js
+- create .env.local and add following.  Use the details displayed with the `npx supabase start` step
+```
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+```
+- Generate database types - npx supabase gen types typescript --local > src/common/database.types.ts
+- Enable RLS and add policy to 'allow users to read their own todos'
+  - (user_id = auth.uid())
+- 
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
