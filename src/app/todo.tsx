@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-export default function Todo({ todo }: { todo: any }) {
+export default function Todo({ todo }: { todo: Todo }) {
   const router = useRouter();
 
   const markAsComplete = async () => {
