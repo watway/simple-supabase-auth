@@ -37,30 +37,44 @@ export default function Login() {
 
   return (
     <>
-      <div>
-        <h1>Email</h1>
+      <form className="flex-1 flex w-1/3 flex-col gap-2 text-foreground">
+        <label className="text-md">Email</label>
         <input
           type="text"
           name="email"
-          className="border-2"
+          className="rounded-md px-4 py-2 bg-inherit border mb-6"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
-      </div>
-      <div>
-        <h1>Password</h1>
+        <label className="text-md">Password</label>
         <input
           type="password"
           name="password"
-          className="border-2"
+          className="rounded-md px-4 py-2 bg-inherit border mb-6"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-      </div>
+      </form>
+
       <div className="flex gap-2">
-        <button onClick={handleSignUp}>Sign up</button>
-        <button onClick={handleSignIn}>Sign in</button>
-        <button onClick={handleSignOut}>Sign out</button>
+        <button
+          className="bg-green-700 rounded px-4 py-2 text-white mb-6"
+          onClick={handleSignUp}
+        >
+          Sign up
+        </button>
+        <button
+          className="bg-green-700 rounded px-4 py-2 text-white mb-6"
+          onClick={handleSignIn}
+        >
+          Sign in
+        </button>
+        <button
+          className="bg-green-700 rounded px-4 py-2 text-white mb-6"
+          onClick={handleSignOut}
+        >
+          Sign out
+        </button>
       </div>
     </>
   );

@@ -14,9 +14,15 @@ export default async function NewTodo() {
   };
 
   return (
-    <form action={addTodo}>
+    <form
+      action={addTodo}
+      className="flex-1 flex w-1/3 flex-col gap-2 text-foreground"
+    >
       <h1>New Todo</h1>
-      <input name="title" className="border-2" />
+      <input
+        name="title"
+        className="rounded-md px-4 py-2 bg-inherit border mb-6"
+      />
     </form>
   );
 }
